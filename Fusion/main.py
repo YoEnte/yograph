@@ -1,6 +1,6 @@
 from socha import *
-import random
 from yograph import YoGraph
+import random
 
 class Logic(IClientHandler):
 
