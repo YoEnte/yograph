@@ -1,0 +1,3 @@
+socha==1.0.7
+networkx==3.0
+matplotlib==3.7.1
