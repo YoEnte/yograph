@@ -9,7 +9,7 @@ class Logic(IClientHandler):
 
     def __init__(self) -> None:
         pass
-
+        
     def calculate_move(self) -> Move:
 
         test_vecs = [
