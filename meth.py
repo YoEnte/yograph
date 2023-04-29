@@ -3,6 +3,30 @@ import random
 import math
 import time
 
+class Meth:
+    def get_lines_peng(p: Penguin) -> list:
+
+        lines = []
+            
+        x = p.coordinate.x
+        y = -(p.coordinate.y)
+        
+        for v in Vector().directions[0:3]:
+            m = -int(v.d_y / v.d_x)
+            b = y - (x * m)
+
+            lines.append(str(m) + ' * x + ' + str(b))
+
+        return lines
+    
+    def get_lines_team(t: Team) -> list:
+
+        lines = []
+        for p in t.penguins:
+            lines.extend(Meth.get_lines_peng(p))
+
+        return lines
+
 class Logic(IClientHandler):
 
     gameState: GameState
@@ -12,19 +36,15 @@ class Logic(IClientHandler):
         
     def calculate_move(self) -> Move:
 
-        test_vecs = [
-            Vector(1, -1),
-            Vector(5, -5),
-            Vector(20, 0),
-            Vector(-11, -1),
-            Vector(-51, -51),
-        ]
+        print('\nmy team:')
+        for l in Meth.get_lines_team(self.gameState.current_team):
+            print(l)
 
-        for v in test_vecs:
-            print(v.d_x, v.d_y)
+        print('\nop team:')
+        for l in Meth.get_lines_team(self.gameState.current_team.opponent):
+            print(l)
 
-
-        return random.choice(self.gameState.possible_moves)
+        return random.choice(self.gameState.possible_moves)   
 
     def on_update(self, state: GameState):
         self.gameState = state
