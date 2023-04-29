@@ -21,7 +21,7 @@ class Logic(IClientHandler):
         ]
 
         for v in test_vecs:
-            print(v, v.magnitude, (v / v.magnitude))
+            print(v.d_x, v.d_y)
 
 
         return random.choice(self.gameState.possible_moves)
